@@ -142,7 +142,7 @@ img.logo{
 
 img.banner-img {
     /* Set a specific height and width */
-    height: 65%;
+    height: 72%;
     width: 99%;
     margin-left: 6px;
     /* Position and center the image to scale nicely on all screens */
@@ -152,7 +152,7 @@ img.banner-img {
     position: relative;
 }
 
-h2.welcome{
+h2.center-text{
     position: absolute;
     top: 50%;
     left: 50%;
