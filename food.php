@@ -117,14 +117,13 @@ $all_food_record = mysqli_fetch_assoc($all_food_result);
 
 <div class="banner">
     <img class="banner-img" src="images/foodbanner.png">
-    <div class="banner-text">
         <h2 class="center-text">FOODS</h2>
+        <!--Search bar for foods table-->
+        <form class="foodsearch"  action="" method="post">
+            <input type="text" name = 'search'>
+            <input type = "submit" name = "submit" value="Search">
+        </form>
     </div>
-    <!--Search bar for foods table-->
-    <form class="foodsearch"  action="" method="post">
-        <input type="text" name = 'search'>
-        <input type = "submit" name = "submit" value="Search">
-    </form>
 
     <h2 class="title">FOOD MENU:</h2>
     <!--Drop down menu to sort products-->
@@ -160,6 +159,7 @@ $all_food_record = mysqli_fetch_assoc($all_food_result);
         <button id="Sweet" name="Sweet" type="submit" value="Category">Sweet</button>
     </form>
 
+    <div class="products-box" align="center">
     <?php
     /*Query searching for items in food table*/
     if(isset($_POST['search'])) {
@@ -173,17 +173,18 @@ $all_food_record = mysqli_fetch_assoc($all_food_result);
             echo "There was no search results!";
         }else{
             while ($row = mysqli_fetch_array($query)) {
-                echo $row ['FItem'];
+                echo "<div class='product-box'>";
+                echo "<img class='product-img' src='images/". $row['Imageurl'] . "'>";
                 echo "<br>";
+                echo $row['FItem'];
+                echo "<br>";
+                echo "$" . $row['FPrice'];
+                echo "</div>";
             }
         }
     }
-    ?>
-
-    <div class="products-box" align="center">
-    <?php
     /*Display format of results when different filters applied*/
-    if(isset($_GET['filter'])) {
+    elseif(isset($_GET['filter'])) {
         while ($rows=$filter_result-> fetch_assoc())
         {
             echo "<div class='product-box'>";
