@@ -54,6 +54,11 @@ $this_specials_record = mysqli_fetch_assoc($this_specials_result);
 
 </body>
 
+    <div class="banner">
+    <img class="banner-img" src="images/bannerimage.png">
+        <div class="banner-text">
+            <h2 class="welcome">WELCOME</h2>
+    </div>
     <div class="hsearchdisplay"></div>
     <?php
     if(isset($_POST['search'])) {
@@ -74,10 +79,11 @@ $this_specials_record = mysqli_fetch_assoc($this_specials_result);
     }
     ?>
     </div>
-    <h2>Weekly Specials:</h2>
+
+<h2 class="title"> Weekly Specials:</h2>
 
     <!--specials form-->
-    <form name='specials_form' id='specials_form' method = 'get' action ='home3-4.php' class="specials_form">
+    <form name='specials_form' id='specials_form' method = 'get' action ='home3-5.php' class="specials_form">
         <select class="specials" id = 'special' name = 'special'>
             <!--options-->
             <?php
