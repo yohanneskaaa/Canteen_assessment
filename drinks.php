@@ -105,17 +105,15 @@ $availability_record = mysqli_fetch_assoc($availability_result);
 
 <div class="banner">
     <img class="banner-img" src="images/drinksbanner.png">
-    <div class="banner-text">
         <h2 class="center-text">DRINKS</h2>
-    </div>
+        <!--Search bar for drinks table-->
+        <form class="drinksearch" action="" method="post">
+            <input type="text" name = 'search'>
+            <input type = "submit" name = "submit" value="Search">
+        </form>
 <main>
-    <!--Search bar for drinks table-->
-    <form class="drinksearch" action="" method="post">
-        <input type="text" name = 'search'>
-        <input type = "submit" name = "submit" value="Search">
-    </form>
 
-    <h2>DRINKS MENU:</h2>
+    <h2 class="title">DRINKS MENU:</h2>
     <!--Drop down menu to sort products-->
     <form class="drinkfilter" name='sort_form' id='sort_form' method='get' action='drinks3-5.php'>
         <select id='sort' name='sort' onchange='javascript:this.form.submit()'>
@@ -137,6 +135,7 @@ $availability_record = mysqli_fetch_assoc($availability_result);
         <button id="hotdrinks" name="hotdrinks" type="submit" value="hot">Hot</button>
     </form>
 
+    <div class="products-box" align="center">
     <?php
     /*Query searching for items in drinks table*/
     if(isset($_POST['search'])) {
@@ -148,16 +147,18 @@ $availability_record = mysqli_fetch_assoc($availability_result);
             echo "There was no search results!";
         }else{
             while ($row = mysqli_fetch_array($query)) {
-                echo $row ['DItem'];
+                echo "<div class='product-box'>";
+                echo "<img class='product-img' src='images/". $row['Imageurl'] . "'>";
                 echo "<br>";
+                echo $row['DItem'];
+                echo "<br>";
+                echo "$" . $row ['DPrice'];
+                echo "</div>";
             }
         }
     }
-    ?>
-    <div class="products-box" align="center">
-    <?php
     /*Display format of results when different filters applied*/
-    if(isset($_GET['colddrinks'])) {
+    elseif(isset($_GET['colddrinks'])) {
         while ($rows=$colddrinks_result-> fetch_assoc())
         {
             echo "<div class='product-box'>";
