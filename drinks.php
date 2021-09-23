@@ -83,20 +83,31 @@ $availability_record = mysqli_fetch_assoc($availability_result);
 </head>
 <body>
 <header>
-    <h1>WGC CANTEEN</h1>
-    <nav>
-        <ul>
-            <!--Links to other pages-->
+    <div class="container1">
+        <h1>WGC CANTEEN</h1>
+        <form class="homesearch" action="" method="post">
+            <input type="text" name = 'search' placeholder="Search product" id="search_product">
+            <button type = "submit" name = "submit" placeholder="Go"><i class="full-search"></i></button>
+        </form>
+    </div>
+    <ul>
+        <nav>
             <li><a href="home3-5.php" >HOME</a></li>
             <li><a href="food3-5.php" >FOOD</a></li>
             <li><a href="drinks3-5.php" >DRINKS</a></li>
             <li><a href="treats3-5.php" >TREATS</a></li>
-        </ul>
-    </nav>
+        </nav>
+    </ul>
+    <img class="logo" src="wgclogo.png">
 </header>
-<hr>
+
 </body>
 
+<div class="banner">
+    <img class="banner-img" src="images/drinksbanner.png">
+    <div class="banner-text">
+        <h2 class="center-text">DRINKS</h2>
+    </div>
 <main>
     <!--Search bar for drinks table-->
     <form class="drinksearch" action="" method="post">
@@ -150,43 +161,43 @@ $availability_record = mysqli_fetch_assoc($availability_result);
         while ($rows=$colddrinks_result-> fetch_assoc())
         {
             echo "<div class='product-box'>";
-            echo "<img src='images/". $rows['Imageurl'] . "'>";
+            echo "<img class='product-img' src='images/". $rows['Imageurl'] . "'>";
             echo "<br>";
             echo $rows['DItem'];
             echo "<br>";
-            echo $rows ['DPrice'];
+            echo "$" . $rows ['DPrice'];
             echo "</div>";
         }
     }elseif(isset($_GET['hotdrinks'])) {
         while ($rows=$hotdrinks_result-> fetch_assoc())
         {
             echo "<div class='product-box'>";
-            echo "<img src='images/". $rows['Imageurl'] . "'>";
+            echo "<img class='product-img' src='images/". $rows['Imageurl'] . "'>";
             echo "<br>";
             echo $rows['DItem'];
             echo "<br>";
-            echo $rows ['DPrice'];
+            echo "$" . $rows ['DPrice'];
             echo "</div>";
 
         }
     }elseif(isset($_GET['availability'])) {
         while ($rows=$availability_result-> fetch_assoc()) {
             echo "<div class='product-box'>";
-            echo "<img src='images/". $rows['Imageurl'] . "'>";
+            echo "<img class='product-img' src='images/". $rows['Imageurl'] . "'>";
             echo "<br>";
             echo $rows['DItem'];
             echo "<br>";
-            echo $rows ['DPrice'];
+            echo "$" . $rows ['DPrice'];
             echo "</div>";
         }
     }else {
         while ($rows = $all_drink_result->fetch_assoc()) {
             echo "<div class='product-box'>";
-            echo "<img src='images/" . $rows['Imageurl'] . "'>";
+            echo "<img class='product-img' src='images/" . $rows['Imageurl'] . "'>";
             echo "<br>";
             echo $rows['DItem'];
             echo "<br>";
-            echo $rows ['DPrice'];
+            echo "$" . $rows ['DPrice'];
             echo "</div>";
         }
     }
