@@ -53,14 +53,23 @@ p{
 
 .foodsearch{
     text-align: center;
+    top: 53%;
+    left: 42.2%;
+    position: absolute;
 }
 
 .drinksearch{
     text-align: center;
+    top: 53%;
+    left: 42%;
+    position: absolute;
 }
 
 .treatsearch{
     text-align: center;
+    top: 53%;
+    left: 42%;
+    position: absolute;
 }
 
 form.homesearch input[type=text] {
@@ -86,9 +95,6 @@ form.homesearch button {
     margin-top: -102px;
     padding-left: 10px;
     margin-left: 94%;
-}
-
-.hsearchdisplay{
 }
 
 hr{
