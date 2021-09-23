@@ -51,15 +51,14 @@ $this_treat_record = mysqli_fetch_assoc($this_treat_result);
 
 <div class="banner">
     <img class="banner-img" src="images/treatsbanner.png">
-    <div class="banner-text">
         <h2 class="center-text">TREATS</h2>
+        <form class="treatsearch" action="" method="post">
+            <input type="text" name = 'search'>
+            <input type = "submit" name = "submit" value="Search">
+        </form>
     </div>
 
 <main>
-    <form class="treatsearch" action="" method="post">
-        <input type="text" name = 'search'>
-        <input type = "submit" name = "submit" value="Search">
-    </form>
 
     <h2 class="title">TREATS</h2>
 
