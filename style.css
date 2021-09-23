@@ -1,0 +1,168 @@
+html{
+    background-color: white;
+}
+h1{
+    color: #EEEEEE;
+    text-align: center;
+    font-family: 'Bungee', cursive;
+    font-size: 70px;
+    margin-top: 7px;
+}
+
+ul{
+    list-style-type: none;
+    text-align: center;
+    font-family: "Signika", cursive;
+    font-size: 24px;
+    padding: 0px;
+    margin-left: -7px;
+    margin-top: 69px;
+    background-color: #EEEEEE;
+    width: 101%;
+    position: relative;
+}
+
+li{
+    display: inline;
+    text-decoration: none;
+}
+
+.foodfilter{
+    display: inline-block;
+}
+
+.drinkfilter{
+    display: inline-block;
+}
+
+.treatfilter{
+    display: inline-block;
+}
+
+th{
+    text-align: left;
+}
+
+p{
+    text-align: center;
+}
+
+.specialss{
+    text-align: center;
+}
+
+.foodsearch{
+    text-align: center;
+}
+
+.drinksearch{
+    text-align: center;
+}
+
+.treatsearch{
+    text-align: center;
+}
+
+form.homesearch input[type=text] {
+    padding: 10px;
+    font-size: 15px;
+    background: #f1f1f1;
+    border-color: #FFEF3C;
+    border-width: 3px;
+    border-radius: 20px;
+    margin-left: 80%;
+    margin-top: -110px;
+}
+
+form.homesearch button {
+    height: 30px;
+    vertical-align: middle;
+    color: grey;
+    font-size: 9px;
+    padding-top: 4px;
+    border-color: #FFEF3C;
+    border-width: 3px;
+    border-radius: 20px;
+    margin-top: -102px;
+    padding-left: 10px;
+    margin-left: 94%;
+}
+
+.hsearchdisplay{
+}
+
+hr{
+    border: 2px black;
+    margin-top: 1000px;
+    margin-bottom: 30px;
+    display: block;
+    height: 5px;
+    background-color: black;
+}
+
+select.specials{
+    display: inline-block;
+    font-size: 18px;
+    width: 100px;
+    border-color: teal;
+}
+
+input[type=submit]{
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    background-color: teal;
+    color: black;
+    margin: 2px 2px;
+    border-radius: 5px;
+    border: 0px;
+}
+
+h2{
+    text-align: center;
+}
+
+.product-img {
+    width: 130px;
+    height: 110px;
+}
+
+img.logo{
+    width: 120px;
+    height: 120px;
+    padding: 10px 10px;
+    position: absolute;
+    margin-top: -160px;
+
+}
+
+.products-box{
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    width: 60%;
+    flex-wrap: wrap;
+}
+
+.product-box{
+    padding: 15px 32px;
+    border: solid 1px black;
+    font-family: 'Open Sans', sans-serif;
+    display: inline-block;
+    margin: 20px;
+    text-align: center;
+    width: 20%;
+}
+
+.container1 {
+    overflow: visible;
+    background-color: #0092B4;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 13%;
+    margin-left: -8px;
+}
+
+
+
