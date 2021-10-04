@@ -6,6 +6,7 @@ else{
     echo "connected to database";
 }
 
+/* specials Query (get weekday)*/
 $all_specials_query = "SELECT Weekday FROM specials";
 $all_specials_result = mysqli_query($con, $all_specials_query);
 if(isset($_GET['special'])){
@@ -29,56 +30,35 @@ $this_specials_record = mysqli_fetch_assoc($this_specials_result);
     <link rel="stylesheet" type="text/css" href="style3-5.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chivo:wght@900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Signika&display=swap" rel="stylesheet">
 </head>
 <body>
 <header>
         <div class="container1">
             <h1>WGC CANTEEN</h1>
-            <form class="homesearch" action="" method="post">
+            <!--overall search from all products displays on another page - searchresult.php-->
+            <form class="overallsearch" action="searchresult.php" method="post">
                 <input type="text" name = 'search' placeholder="Search product" id="search_product">
-                <button type = "submit" name = "submit" placeholder="Go"><i class="full-search"></i></button>
+                <button type = "submit" name = "submit"><img class="searchicon" alt="search" src="images/searchicon.png"></button>
             </form>
         </div>
-            <ul>
-                <nav>
-                    <li><a href="home3-5.php" >HOME</a></li>
-                    <li><a href="food3-5.php" >FOOD</a></li>
-                    <li><a href="drinks3-5.php" >DRINKS</a></li>
-                    <li><a href="treats3-5.php" >TREATS</a></li>
-                </nav>
-            </ul>
-    <img class="logo" src="wgclogo.png">
+
+        <ul>
+            <!--links to other pages-->
+            <li><a href="home3-5.php" >HOME</a></li>
+            <li><a href="food3-5.php" >FOOD</a></li>
+            <li><a href="drinks3-5.php" >DRINKS</a></li>
+            <li><a href="treats3-5.php" >TREATS</a></li>
+        </ul>
+    <img class="logo" alt="WGC logo" src="wgclogo.png">
 </header>
 
-</body>
-
-    <div class="banner">
-    <img class="banner-img" src="images/bannerimage.png">
-        <div class="banner-text">
-            <h2 class="welcome">WELCOME</h2>
-    </div>
-    <div class="hsearchdisplay"></div>
-    <?php
-    if(isset($_POST['search'])) {
-        $search = $_POST['search'];
-        $query1 = "(SELECT FItem AS name FROM foods WHERE FItem LIKE '%$search%')
-                UNION (SELECT DItem AS name FROM drinks WHERE DItem LIKE '%$search%')
-                UNION (SELECT TItem AS name From treats WHERE TItem LIKE '%$search%')";
-        $query = mysqli_query($con, $query1);
-        $count = mysqli_num_rows($query);
-        if($count == 0){
-            echo "There was no search results!";
-        }else{
-            while ($row = mysqli_fetch_array($query)) {
-                echo $row ['name'];
-                echo "<br>";
-            }
-        }
-    }
-    ?>
-    </div>
+<!--banner image-->
+<div class="banner">
+    <img class="banner-img" alt="pizza image banner" src="images/homebanner.png">
+        <h2 class="center-text">WELCOME</h2>
+</div>
 
 <h2 class="title"> Weekly Specials:</h2>
 
@@ -98,6 +78,7 @@ $this_specials_record = mysqli_fetch_assoc($this_specials_result);
     </form>
 
     <?php
+    /*display of weekly specials*/
     echo "<p> DAY: " . $this_specials_record['weekday'] . "<br>";
     echo "<p> FOOD: " . $this_specials_record['FItem'] . "<br>";
     echo "<p> DRINK: " . $this_specials_record['DItem'] . "<br>";
@@ -107,4 +88,5 @@ $this_specials_record = mysqli_fetch_assoc($this_specials_result);
     <p> All items on special for the day are 20% </p>
 
 </main>
+</body>
 </html>

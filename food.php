@@ -90,74 +90,75 @@ $all_food_record = mysqli_fetch_assoc($all_food_result);
     <link rel="stylesheet" type="text/css" href="style3-5.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chivo:wght@900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Signika&display=swap" rel="stylesheet">
 </head>
-<body>
+<main>
 <header>
     <div class="container1">
         <h1>WGC CANTEEN</h1>
-        <form class="homesearch" action="" method="post">
+        <!--overall search from all products displays on another page - searchresult.php-->
+        <form class="overallsearch" action="searchresult.php" method="post">
             <input type="text" name = 'search' placeholder="Search product" id="search_product">
-            <button type = "submit" name = "submit" placeholder="Go"><i class="full-search"></i></button>
+            <button type = "submit" name = "submit"><img class="searchicon" alt="search" src="images/searchicon.png"></button>
         </form>
     </div>
     <ul>
-        <nav>
-            <li><a href="home3-5.php" >HOME</a></li>
-            <li><a href="food3-5.php" >FOOD</a></li>
-            <li><a href="drinks3-5.php" >DRINKS</a></li>
-            <li><a href="treats3-5.php" >TREATS</a></li>
-        </nav>
+        <!--links to other pages-->
+        <li><a href="home3-5.php" >HOME</a></li>
+        <li><a href="food3-5.php" >FOOD</a></li>
+        <li><a href="drinks3-5.php" >DRINKS</a></li>
+        <li><a href="treats3-5.php" >TREATS</a></li>
     </ul>
-    <img class="logo" src="wgclogo.png">
+    <img class="logo" alt="WGC logo" src="wgclogo.png">
 </header>
 
-</body>
-
 <div class="banner">
-    <img class="banner-img" src="images/foodbanner.png">
+    <img class="banner-img" alt="Burger and fries banner" src="images/foodbanner.png">
         <h2 class="center-text">FOODS</h2>
         <!--Search bar for foods table-->
-        <form class="foodsearch"  action="" method="post">
+        <form class="foodsearch" method="post">
             <input type="text" name = 'search'>
             <input type = "submit" name = "submit" value="Search">
         </form>
     </div>
 
-    <h2 class="title">FOOD MENU:</h2>
+    <div class="foodfilter-box">
     <!--Drop down menu to sort products-->
     <form class="foodfilter" name='sort_form' id='sort_form' method='get' action='food3-5.php'>
-        <select id='sort' name='sort' onchange='javascript:this.form.submit()'>
+        <select id='sort' name='sort' class="sort">
             <!--options-->
             <option value = 'alphaAsc'> Alphabetical A to Z</option>
             <option value = 'alphaDesc'> Alphabetical Z to A</option>
             <option value = 'costAsc'> Price Low to High</option>
             <option value = 'costDesc'> Price High to Low</option>
-        </select></form>
+        </select>
+        <input type='submit' name='drop-button' value='>>'>
+    </form>
 
     <!--filter buttons-->
     <form class="foodfilter" action="food3-5.php" method="get">
-        <button id="filter" name="filter" type="submit" value="Availability">Availability</button>
+        <button class="sort-button" id="filter1" name="filter" type="submit" value="Availability">Availability</button>
     </form>
     <form class="foodfilter" action="food3-5.php" method="get">
-        <button id="filter" name="filter" type="submit" value="Veganfriendly">Veganfriendly</button>
+        <button class="sort-button" id="filter2" name="filter" type="submit" value="Veganfriendly">Veganfriendly</button>
     </form>
     <form class="foodfilter" action="food3-5.php" method="get">
-        <button id="filter" name="filter" type="submit" value="Vegetarianfriendly">Vegetarianfriendly</button>
+        <button class="sort-button" id="filter3" name="filter" type="submit" value="Vegetarianfriendly">Vegetarianfriendly</button>
     </form>
     <form class="foodfilter" action="food3-5.php" method="get">
-        <button id="filter" name="filter" type="submit" value="Nutfree">Nutfree</button>
+        <button class="sort-button" id="filter4" name="filter" type="submit" value="Nutfree">Nutfree</button>
     </form>
     <form class="foodfilter" action="food3-5.php" method="get">
-        <button id="Fruits" name="Fruits" type="submit" value="Category">Fruits</button>
+        <button class="sort-button" id="Fruits" name="Fruits" type="submit" value="Category">Fruits</button>
     </form>
     <form class="foodfilter" action="food3-5.php" method="get">
-        <button id="Savoury" name="Savoury" type="submit" value="Category">Savoury</button>
+        <button class="sort-button" id="Savoury" name="Savoury" type="submit" value="Category">Savoury</button>
     </form>
     <form class="foodfilter" action="food3-5.php" method="get">
-        <button id="Sweet" name="Sweet" type="submit" value="Category">Sweet</button>
+        <button class="sort-button" id="Sweet" name="Sweet" type="submit" value="Category">Sweet</button>
     </form>
+    </div>
 
     <div class="products-box" align="center">
     <?php
@@ -188,7 +189,7 @@ $all_food_record = mysqli_fetch_assoc($all_food_result);
         while ($rows=$filter_result-> fetch_assoc())
         {
             echo "<div class='product-box'>";
-            echo "<img class='product-img' src='images/". $rows['Imageurl'] . "'>";
+            echo "<img class='product-img' src='images/". $rows['Imageurl'] . "' alt='". $rows['FItem'] ."'>";
             echo "<br>";
             echo $rows['FItem'];
             echo "<br>";
@@ -198,7 +199,7 @@ $all_food_record = mysqli_fetch_assoc($all_food_result);
     }elseif(isset($_GET['Fruits'])) {
         while ($rows=$fruits_result-> fetch_assoc()) {
             echo "<div class='product-box'>";
-            echo "<img class='product-img' src='images/" . $rows['Imageurl'] . "'>";
+            echo "<img class='product-img' src='images/" . $rows['Imageurl'] . "'alt='". $rows['FItem'] ."'>";
             echo "<br>";
             echo $rows['FItem'];
             echo "<br>";
@@ -209,7 +210,7 @@ $all_food_record = mysqli_fetch_assoc($all_food_result);
         while ($rows=$savoury_result->fetch_assoc())
         {
             echo "<div class='product-box'>";
-            echo "<img class='product-img' src='images/". $rows['Imageurl'] . "'>";
+            echo "<img class='product-img' src='images/". $rows['Imageurl'] . "' alt='". $rows['FItem'] ."'>";
             echo "<br>";
             echo $rows['FItem'];
             echo "<br>";
@@ -220,7 +221,7 @@ $all_food_record = mysqli_fetch_assoc($all_food_result);
         while ($rows=$sweet_result->fetch_assoc())
         {
             echo "<div class='product-box'>";
-            echo "<img class='product-img' src='images/". $rows['Imageurl'] . "'>";
+            echo "<img class='product-img' src='images/". $rows['Imageurl'] . "' alt='". $rows['FItem'] ."'>";
             echo "<br>";
             echo $rows['FItem'];
             echo "<br>";
@@ -231,7 +232,7 @@ $all_food_record = mysqli_fetch_assoc($all_food_result);
         while($rows=$all_food_result-> fetch_assoc())
         {
             echo "<div class='product-box'>";
-            echo "<img class='product-img' src='images/". $rows['Imageurl'] . "'>";
+            echo "<img class='product-img' src='images/". $rows['Imageurl'] . "' alt='". $rows['FItem'] ."'>";
             echo "<br>";
             echo $rows['FItem'];
             echo "<br>";
@@ -241,3 +242,7 @@ $all_food_record = mysqli_fetch_assoc($all_food_result);
     }
     ?>
     </div>
+</main>
+</body>
+</html>
+
